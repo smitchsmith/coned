@@ -161,13 +161,13 @@ class Meter(object):
         # await page.screenshot({'path': 'meter3.png'})
 
         if self.account_number:
-            account_page = await browser.newPage()
             account_page_url = 'https://www.coned.com/en/accounts-billing/dashboard?account=' + self.account_number
-            await account_page.goto(account_page_url)
-            # await account_page.screenshot({'path': 'meter4.png'})
-            sleep = 8000
+            print(account_page_url)
+            await page.goto(account_page_url)
+            # await page.screenshot({'path': 'meter4.png'})
+            sleep = 30000
             _LOGGER.debug("Waiting for = %s millis", sleep)
-            await account_page.waitFor(sleep)
+            await page.waitFor(sleep)
 
         # Access the API using your newly acquired authentication cookies!
         api_page = await browser.newPage()
